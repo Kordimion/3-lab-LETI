@@ -1,7 +1,4 @@
 #include <iostream>
-#include "ConsoleLoop.h"
-#include "thread"
-#include <chrono>
 #include <algorithm>
 
 #define MATRIX_SIZE 10
@@ -109,16 +106,16 @@ bool Lab3Endpoints(const std::string command, int(* arr)[MATRIX_SIZE], int& arrS
 		for (int i = 0; i < arrSize / 2; ++i)
 		{
 			for (int j = i; j < arrSize - 1 - i; ++j, ++current)
-				arr[j][i] = current;
+				arr[i][j] = current;
 
 			for (int j = i; j < arrSize - 1 - i; ++j, ++current)
-				arr[arrSize - i - 1][j] = current;
+				arr[j][arrSize - i - 1] = current;
 
 			for (int j = i; j < arrSize - 1 - i; ++j, ++current)
-				arr[arrSize - j - 1][arrSize - i - 1] = current;
+				arr[arrSize - i - 1][arrSize - j - 1] = current;
 
 			for (int j = i; j < arrSize - 1 - i; ++j, ++current)
-				arr[i][arrSize - j - 1] = current;
+				arr[arrSize - j - 1][i] = current;
 		}
 
 		if (arrSize % 2 == 1) arr[arrSize / 2][arrSize / 2] = current;
